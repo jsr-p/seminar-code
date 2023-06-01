@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fintopmet"
+authors = [
+    {name ="jsr-p", email ="jonas.raaschou@sodas.ku.dk"},
+]
+description = "Python Boilerplate contains all the boilerplate you need to create a Python package."
+requires-python = ">=3.10"
+keywords = []
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "pandas >= 2.0",
+    "pyarrow",
+    "click",
+    "polars",
+    "lightgbm",
+]
+dynamic = ["version", "readme"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = [ "fintopmet*"]
+
+[project.scripts]
+fintopmet = "fintopmet.cli:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "fintopmet.__version__"}
+readme = {file = ["README.md"], content-type = "text/markdown"}
+
+[tool.ruff]
+line-length = 98
